@@ -22,12 +22,13 @@ class Map:
 
   def read_file(self):
     with open('elevation_small.txt', 'r') as file:
-      content = file.read().split()
-      integer_list = [int(i) for i in content]
-      # print(integer_list)
+      content = file.readlines().split()
+      
+      # integer_list = [int(i) for i in content]
 
   
   def make_brightness(self, elevation):
+    # print(type(elevation))
     brightness = (elevation - self.min_elevation) / (self.max_elevation - self.min_elevation)
     color = int(brightness * 255)
     return (255, 255, 255, brightness) 
@@ -35,9 +36,9 @@ class Map:
 
   def create_brightness_list(self):
     brightness_list = []
-    for elevation in content:
+    for elevation in integer_list:
       pixel = self.make_brightness(elevation)
-      self.brightness_list.append(pixel)
+      brightness_list.append(pixel)
 
 # my_data = content
 
